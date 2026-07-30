@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueBlueBucks | Money Mentoring for Immigrant Families</title>
+    <style>
+        :root {
+            --primary-dark: #0F2C59;
+            --primary-blue: #1D70B8;
+            --light-blue: #F0F7FF;
+            --sky-blue: #E0F2FE;
+            --accent-blue: #0284C7;
+            --text-dark: #1E293B;
+            --text-muted: #475569;
+            --bg-white: #FFFFFF;
+            --border-color: #CBD5E1;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow-soft: 0 10px 25px -5px rgba(15, 44, 89, 0.08), 0 8px 10px -6px rgba(15, 44, 89, 0.04);
+            --shadow-hover: 0 20px 30px -10px rgba(15, 44, 89, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #E2E8F0;
+            padding: 1rem 1.5rem;
+        }
+
+        .header-container {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 800;
+            font-size: 1.35rem;
+            letter-spacing: -0.5px;
+        }
+
+        .btn-top-signup {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.25rem;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-top-signup:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4.5rem 0;
+            border-bottom: 1px solid #F1F5F9;
+        }
+
+        .section-tag {
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            background-color: var(--light-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        #hero {
+            background: linear-gradient(180deg, var(--light-blue) 0%, var(--bg-white) 100%);
+            padding: 5rem 0 4rem 0;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 2.3rem;
+            line-height: 1.25;
+            color: var(--primary-dark);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto 2.5rem auto;
+            font-weight: 500;
+        }
+
+        .hero-image-box {
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            padding: 1rem;
+        }
+
+        .hero-svg-illustration {
+            width: 100%;
+            height: auto;
+            max-height: 280px;
+            border-radius: var(--radius-md);
+            background-color: var(--light-blue);
+        }
+
+        #problem { background-color: var(--bg-white); }
+
+        .story-card {
+            background-color: var(--light-blue);
+            border-left: 5px solid var(--primary-blue);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin-top: 1.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .story-heading { font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 1rem; font-weight: 700; }
+        .story-body { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 1.25rem; }
+
+        .problem-impact-box {
+            background-color: #FEF2F2;
+            border: 1px solid #FECACA;
+            border-radius: var(--radius-md);
+            padding: 1.25rem 1.5rem;
+            margin-top: 1.5rem;
+            color: #991B1B;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        #how-it-works { background-color: #FAFBFD; }
+        .section-heading { font-size: 2rem; color: var(--primary-dark); margin-bottom: 1rem; font-weight: 800; letter-spacing: -0.5px; }
+        
+        .steps-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+        .step-card {
+            background-color: var(--bg-white);
+            border: 1px solid #E2E8F0;
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .step-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+        .step-number {
+            background-color: var(--sky-blue);
+            color: var(--primary-dark);
+            font-weight: 800;
+            font-size: 1.2rem;
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .step-content h3 { font-size: 1.2rem; color: var(--primary-dark); margin-bottom: 0.4rem; }
+        .step-content p { color: var(--text-muted); font-size: 1rem; }
+
+        #proof { background-color: var(--bg-white); }
+        .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .proof-item { border: 1px solid #E2E8F0; border-radius: var(--radius-md); padding: 1.5rem; background: linear-gradient(180deg, #FFFFFF 0%, var(--light-blue) 100%); }
+        .proof-icon { margin-bottom: 1rem; color: var(--primary-blue); }
+
+        #faq { background-color: var(--light-blue); }
+        .faq-box { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+        .faq-card { background-color: var(--bg-white); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-soft); border: 1px solid #DBEAFE; }
+        .faq-question { font-size: 1.25rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+        .faq-answer { color: var(--text-dark); font-size: 1.05rem; line-height: 1.6; }
+
+        #signup { background: linear-gradient(180deg, var(--primary-dark) 0%, #081B38 100%); color: white; text-align: center; padding: 5rem 0; border-bottom: none; }
+        .cta-card { max-width: 680px; margin: 0 auto; }
+        .cta-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; color: #FFFFFF; }
+        .cta-description { font-size: 1.15rem; color: #93C5FD; margin-bottom: 2rem; }
+        .pricing-pill { display: inline-block; background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); padding: 0.6rem 1.2rem; border-radius: 30px; font-size: 1rem; font-weight: 600; color: #E0F2FE; margin-bottom: 2rem; }
+        .btn-large { display: inline-block; width: 100%; max-width: 420px; background-color: #38BDF8; color: #0F2C59; font-size: 1.25rem; font-weight: 800; padding: 1.25rem 2rem; border-radius: var(--radius-md); text-decoration: none; box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3); transition: all 0.2s ease; cursor: pointer; border: none; }
+        .btn-large:hover { background-color: #7DD3FC; transform: translateY(-2px); box-shadow: 0 14px 25px rgba(56, 189, 248, 0.4); }
+        .guarantee-note { margin-top: 1.5rem; font-size: 0.95rem; color: #CBD5E1; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+
+        footer { background-color: #081B38; color: #64748B; text-align: center; padding: 2rem 0; font-size: 0.9rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
+        @media (min-width: 640px) { .hero-title { font-size: 2.75rem; } .steps-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 639px) { .hero-title { font-size: 1.85rem; } .hero-subtitle { font-size: 1.05rem; } section { padding: 3.5rem 0; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-brand">
+                <span style="color: var(--accent-blue); font-size: 1.5rem; font-weight: 900;">$</span> BlueBlueBucks
+            </div>
+            <a href="#signup" class="btn-top-signup">Sign Up</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <span class="section-tag">Hands-On Money Mentoring</span>
+                <h1 class="hero-title">BlueBlueBucks is a hands-on money mentoring service that helps immigrant families navigate American finances and build lasting wealth.</h1>
+                <p class="hero-subtitle">Weekly 1-on-1 coaching, simple investing guides, and your household budget spreadsheet built and filled out for you.</p>
+
+                <div class="hero-image-box">
+                    <svg class="hero-svg-illustration" viewBox="0 0 700 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="700" height="240" rx="12" fill="#F0F7FF"/>
+                        <rect x="50" y="40" width="280" height="160" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+                        <path d="M70 70 H220 M70 100 H290 M70 130 H180 M70 160 H260" stroke="#94A3B8" stroke-width="6" stroke-linecap="round"/>
+                        <rect x="370" y="40" width="280" height="160" rx="8" fill="#FFFFFF" stroke="#38BDF8" stroke-width="2"/>
+                        <rect x="390" y="60" width="240" height="30" rx="4" fill="#E0F2FE"/>
+                        <path d="M390 120 L450 100 L510 130 L610 80" stroke="#1D70B8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="610" cy="80" r="6" fill="#0284C7"/>
+                        <text x="400" y="180" fill="#0F2C59" font-weight="bold" font-size="14">Custom Budget &amp; Receipts Completed</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <section id="problem">
+            <div class="container">
+                <span class="section-tag">The Real Challenge</span>
+                <h2 class="section-heading">When financial stress hits home</h2>
+                <div class="story-card">
+                    <h3 class="story-heading">Mateo’s Story</h3>
+                    <p class="story-body">Mateo is a student managing his own schoolwork while trying to figure out his family’s finances. The problem hits him when he is sitting at the kitchen table looking at his college acceptance letters and tuition bills.</p>
+                </div>
+                <div class="problem-impact-box">⚠️ Every confusing tax form, unexpected bill, and missed investment opportunity isn't just confusing—it directly threatens whether a student can pay tuition on time without taking on painful debt.</div>
+            </div>
+        </section>
+
+        <section id="how-it-works">
+            <div class="container">
+                <span class="section-tag">Simple Process</span>
+                <h2 class="section-heading">How we work together</h2>
+                <div class="steps-grid">
+                    <div class="step-card"><div class="step-number">1</div><div class="step-content"><h3>Weekly 1-on-1 Classes</h3><p>We meet every week to answer your questions and clearly explain how American banks, credit, and taxes work.</p></div></div>
+                    <div class="step-card"><div class="step-number">2</div><div class="step-content"><h3>Your Budget Built For You</h3><p>I personally build your family spreadsheet and type in your first month of receipts so you never have to do the math.</p></div></div>
+                    <div class="step-card"><div class="step-number">3</div><div class="step-content"><h3>Easy Investing Guides</h3><p>You get clear, step-by-step guides showing how to start growing your family’s savings safely for the future.</p></div></div>
+                    <div class="step-card"><div class="step-number">4</div><div class="step-content"><h3>Reach $1,000 Extra Savings</h3><p>You start building real wealth, keeping more money each month, and reaching your family goals stress-free.</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proof">
+            <div class="container">
+                <span class="section-tag">What You Get</span>
+                <h2 class="section-heading">Direct hands-on financial support</h2>
+                <div class="proof-grid">
+                    <div class="proof-item"><h4>Educational Courses</h4><p>Direct lessons explaining U.S. financial rules, credit scores, and saving strategies in clear, plain language.</p></div>
+                    <div class="proof-item"><h4>Investing &amp; Saving Help</h4><p>Simple, actionable guides to help your family start building long-term generational wealth safely.</p></div>
+                    <div class="proof-item"><h4>Custom Budgeting Plan</h4><p>A personal budget spreadsheet built for your household, including data entry for your first month of receipts.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="container">
+                <span class="section-tag">Honest Answers</span>
+                <h2 class="section-heading">Straight talk about working together</h2>
+                <div class="faq-box">
+                    <div class="faq-card"><div class="faq-question"><span>❓</span> "I have never heard of you. Why should I trust you?"</div><div class="faq-answer">I work with you personally, one-on-one. You keep total control of your accounts—I never ask for your passwords or access to your bank.</div></div>
+                    <div class="faq-card"><div class="faq-question"><span>❓</span> "Will this actually work for my family?"</div><div class="faq-answer">Yes. My promise is simple: If your family does not save an extra $1,000 in your first 150 days of working with me, I will return every single penny you paid me.</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="signup">
+            <div class="container">
+                <div class="cta-card">
+                    <span class="section-tag" style="background-color: rgba(255,255,255,0.15); color: #E0F2FE;">Start Your Journey</span>
+                    <h2 class="cta-title">Ready to reach financial freedom?</h2>
+                    <p class="cta-description">
+                        Ready to take control of your family's financial future? Get in touch with us today.
+                    </p>
+
+                    <div>
+                        <div class="pricing-pill">
+                            Simple Price: Exactly 0.5% of your family's annual income
+                        </div>
+                    </div>
+
+                    <a href="#form-container" class="btn-large">
+                        Get in touch
+                    </a>
+
+                    <div id="form-container" style="margin-top: 3rem; background: white; padding: 1rem; border-radius: var(--radius-md);">
+                        <div style="position: relative; width: 100%; height: 0; padding-bottom: 115%; overflow: hidden;">
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeQZyGlCXLfpJeHLuiYG0uLiKCpeHRXhJ5mtnmD1e3GUMJ2lA/viewform?embedded=true" 
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+                                frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 1.25rem; font-size: 0.95rem; color: #CBD5E1;">
+                        Takes 1 minute to fill out, and I will personally reply within 24 hours.
+                    </p>
+
+                    <div class="guarantee-note">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span>100% Money-Back Guarantee: Save $1,000 in 150 days or pay $0.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container"><p>&copy; BlueBlueBucks. Helping immigrant families build lasting wealth.</p></div>
+    </footer>
+
+    <script>
+        console.log("BlueBlueBucks Landing Page Loaded Successfully.");
+    </script>
+</body>
+</html>
