@@ -70,6 +70,12 @@
             letter-spacing: -0.5px;
         }
 
+        .logo-img {
+            height: 48px; /* Increased slightly for better visibility */
+            width: auto;
+            object-fit: contain;
+        }
+
         .btn-top-signup {
             background-color: var(--primary-blue);
             color: #FFFFFF;
@@ -243,9 +249,12 @@
 
     <header>
         <div class="header-container">
-            <div class="logo-brand">
-                <span style="color: var(--accent-blue); font-size: 1.5rem; font-weight: 900;">$</span> BlueBlueBucks
-            </div>
+            <a href="#" class="logo-brand">
+                <img src="Gemini_Generated_Image_7ae5ad7ae5ad7ae5.png" alt="BlueBlueBucks Logo" class="logo-img" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='inline-flex';">
+                <span id="logo-fallback" style="display: none; align-items: center; gap: 0.6rem;">
+                    <span style="color: var(--accent-blue); font-size: 1.5rem; font-weight: 900;">$</span> BlueBlueBucks
+                </span>
+            </a>
             <a href="#signup" class="btn-top-signup">Sign Up</a>
         </div>
     </header>
